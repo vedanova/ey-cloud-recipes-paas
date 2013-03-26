@@ -17,6 +17,7 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
       else 
         worker_count = 0
       end
+
     end
     
     worker_count.times do |count|
