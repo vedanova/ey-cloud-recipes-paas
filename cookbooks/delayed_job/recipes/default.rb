@@ -8,7 +8,7 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
   
     # determine the number of workers to run based on instance size
     if node[:instance_role] == 'solo'
-      worker_count = 1
+      worker_count = 0
     else
       case node[:ec2][:instance_type]
       when 'm1.small' then worker_count = 2
