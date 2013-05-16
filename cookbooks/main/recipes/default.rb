@@ -130,3 +130,5 @@ require_recipe "delayed_job"
 #  # postgresql9_pg_stat_statements "todo" - Not done
 #
 # end
+
+require_recipe "whenever"

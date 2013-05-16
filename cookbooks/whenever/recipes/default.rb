@@ -10,14 +10,14 @@ end
 # Set your application name here
 appname = "paas"
 
-if ['solo', 'util'].include?(node[:instance_role])
+if ['util'].include?(node[:instance_role]) || node[:environment][:framework_env] == 'staging'
 
 # be sure to replace "app_name" with the name of your application.
   local_user = node[:users].first
   execute "whenever" do
     cwd "/data/#{appname}/current"
     user local_user[:username]
-    command "whenever --update-crontab '#{appname}_#{node[:environment][:framework_env]}'"
+    command "bundle exec whenever -w -s 'environment=#{node[:environment][:framework_env]}'"
     action :run
   end
   ey_cloud_report "whenever" do
