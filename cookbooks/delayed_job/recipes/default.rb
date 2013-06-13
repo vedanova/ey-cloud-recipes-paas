@@ -10,7 +10,7 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
 
     #  2 workers on staging
     if node[:environment][:framework_env] == 'staging'
-      worker_count = 2
+      worker_count = 4
     # production solo instance (no workers)
     elsif node[:instance_role] == 'solo'
       worker_count = 0
