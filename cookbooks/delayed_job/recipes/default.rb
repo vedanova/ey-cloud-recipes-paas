@@ -10,13 +10,13 @@ if node[:instance_role] == "solo" || (node[:instance_role] == "util" && node[:na
 
     #  2 workers on staging
     if node[:environment][:framework_env] == 'staging'
-      worker_count = 4
+      worker_count = 2
     # production solo instance (no workers)
     elsif node[:instance_role] == 'solo'
       worker_count = 0
     # production util instance
     elsif node[:instance_role] == 'util'
-      worker_count = 10
+      worker_count = 5
     else
       case node[:ec2][:instance_type]
       when 'm1.small' then worker_count = 2
